@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Virtual Dom Simulate</title>
+  <style>
+  </style>
+</head>
+<body>
+  <div id="app"></div>
+  <script src="./vdom.js"></script>
+  <script>
+    // 旧的VNode
+    const prevVNode = createElement('div', null, [
+      createElement('p', {key:'v001', style:{color:'blue'}}, '节点1'),
+      createElement('p', {key:'v002', '@click':()=>{alert('呵呵')}}, '节点2'),
+      createElement('p', {key:'v003'}, '节点3'),
+      createElement('p', {key:'v004'}, '节点4'),
+    ])
+    // 新的VNode
+    const nextVNode = createElement('div', null, [
+      createElement('p', {key:'v001'}, '节点4'),
+      createElement('p', {key:'v002', style:{color:'red'}}, '节点1'),
+      createElement('p', {key:'v003', '@click':()=>{alert('哈哈')}}, '节点2'),
+      createElement('p', {key:'v004'}, '节点6'),
+      createElement('p', {key:'v005', class:"item-header"}, '节点5'),
+    ])
+    render(prevVNode, document.getElementById('app'))
+    // 2秒后更新
+    setTimeout(() => {
+      render(nextVNode, document.getElementById('app'))
+    }, 1000)
+
+  </script>
+</body>
+</html>
