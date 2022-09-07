@@ -20,5 +20,5 @@
 
 ### Composition API
 
-组合式API
+组合式API。
 
