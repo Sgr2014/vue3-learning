@@ -17,11 +17,15 @@
 </template>
 
 <script setup>
-  import { ref, computed } from 'vue'
+  import { ref, computed, watch } from 'vue'
   import { useMouse } from '../utils/mouse'
+  import { localStorage } from '../utils/useLocalStorage'
 
   let {x, y} = useMouse()
   console.log(x.value, y.value)
+
+  let { storage } = localStorage()
+  console.log(storage.value, 'storage')
 
   let {title, todos, addTodo, clear, active, all, allDone} = useTodos()
   // 列表方法
